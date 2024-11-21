@@ -1,15 +1,5 @@
 <?php
-// Conexão com o banco de dados
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'tak-api';
-$conn = new mysqli($host, $user, $password, $dbname);
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+require_once 'connectionbd.php';
 
 // Capturar o ID do usuário
 $id = intval($_GET['id']);

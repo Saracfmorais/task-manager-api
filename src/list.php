@@ -1,15 +1,5 @@
 <?php
-// Conexão com o banco de dados
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'tak-api';
-$conn = new mysqli($host, $user, $password, $dbname);
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+require_once 'connectionbd.php';
 
 // Consulta para buscar os usuários cadastrados
 $sql = "SELECT USU_INT_ID, USU_VAR_NOME, USU_VAR_EMAIL FROM usuarios";
