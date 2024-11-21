@@ -9,7 +9,8 @@ $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 // Inserir no banco de dados
 $sql = "INSERT INTO usuarios (USU_VAR_NOME, USU_VAR_EMAIL, USU_VAR_SENHA) VALUES ('$nome', '$email', '$senha')";
 
-if ($conn->query($sql) === TRUE) {
+$insert = $conn->query($sql);
+if ($insert === TRUE) {
     echo "Usuário cadastrado com sucesso!";
     // Redirecionar para a página de login
     echo "<a href='list.php'> Ver usuarios cadastrados </a>";
