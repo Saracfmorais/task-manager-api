@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'root';
 $password = '';
-$dbname = 'wobahall';
+$dbname = 'tak-api';
 $conn = new mysqli($host, $user, $password, $dbname);
 
 // Verificar a conexão
@@ -12,20 +12,17 @@ if ($conn->connect_error) {
 }
 
 // Capturar os dados do formulário
+$id = intval($_POST['id']);
 $nome = $_POST['nome'];
 $email = $_POST['email'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-// Inserir no banco de dados
-$sql = "INSERT INTO usuarios (USU_VAR_NOME, USU_VAR_EMAIL, USU_VAR_SENHA) VALUES ('$nome', '$email', '$senha')";
+// Atualizar o registro no banco de dados
+$sql = "UPDATE usuarios SET USU_VAR_NOME = '$nome', USU_VAR_EMAIL = '$email' WHERE USU_INT_ID = $id";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Usuário cadastrado com sucesso!";
-    // Redirecionar para a página de login
-    header("Location: login.php");
-    exit();
+    echo "Usuário atualizado com sucesso! <a href='list.php'>Voltar</a>";
 } else {
-    echo "Erro: " . $conn->error;
+    echo "Erro ao atualizar usuário: " . $conn->error;
 }
 
 $conn->close();

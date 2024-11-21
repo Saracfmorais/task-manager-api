@@ -1,0 +1,44 @@
+<?php
+// Conexão com o banco de dados
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'tak-api';
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Verificar a conexão
+if ($conn->connect_error) {
+    die("Erro na conexão: " . $conn->connect_error);
+}
+
+// Consulta para buscar os usuários cadastrados
+$sql = "SELECT USU_INT_ID, USU_VAR_NOME, USU_VAR_EMAIL FROM usuarios";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<h2>Usuários Cadastrados</h2>";
+    echo "<table border='1'>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>";
+    
+    // Exibir os dados de cada linha
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . htmlspecialchars($row['USU_VAR_NOME']) . "</td>
+                <td>" . htmlspecialchars($row['USU_VAR_EMAIL']) . "</td>
+                <td>
+                    <a href='update.php?id=" . $row['USU_INT_ID'] . "'>Atualizar</a> | 
+                    <a href='delete.php?id=" . $row['USU_INT_ID'] . "' onclick=\"return confirm('Tem certeza que deseja deletar?')\">Deletar</a>
+                </td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "Nenhum usuário encontrado.";
+}
+
+$conn->close();
+?>
