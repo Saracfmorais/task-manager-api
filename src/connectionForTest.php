@@ -3,7 +3,7 @@
 $localhost = '127.0.0.1';
 $username = 'test_user';
 $password = 'test_password';
-$bdname = 'tak-api';
+$bdname = 'taskapi';
 $conn = new mysqli($localhost, $username, $password, $bdname);
 
 // Verificar a conexão

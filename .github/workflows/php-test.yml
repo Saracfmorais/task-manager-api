@@ -23,7 +23,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root_password
-          MYSQL_DATABASE: tak-api
+          MYSQL_DATABASE: taskapi
           MYSQL_USER: test_user
           MYSQL_PASSWORD: test_password
         options: >-
@@ -64,7 +64,7 @@ jobs:
           DB_HOST: 127.0.0.1
           DB_USER: test_user
           DB_PASSWORD: test_password
-          DB_NAME: tak-api
+          DB_NAME: taskapi
         run: |
           mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
           mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD $DB_NAME < test/schema.sql
@@ -75,7 +75,7 @@ jobs:
           DB_HOST: 127.0.0.1
           DB_USER: test_user
           DB_PASSWORD: test_password
-          DB_NAME: tak-api
+          DB_NAME: taskapi
         run: |
           mysql -h $DB_HOST -u $DB_USER -p$DB_PASSWORD $DB_NAME -e "
           INSERT INTO usuarios (USU_VAR_NOME, USU_VAR_EMAIL, USU_VAR_SENHA) 
@@ -87,7 +87,7 @@ jobs:
       #    DB_HOST: 127.0.0.1
       #    DB_USER: test_user
       #    DB_PASSWORD: test_password
-      #    DB_NAME: tak-api
+      #    DB_NAME: taskapi
       #  run: php test/readTest.php
         #executa o teste de conexão segundo teste a ser realizado
       - name: Run Connection Test
@@ -98,5 +98,5 @@ jobs:
      #     DB_HOST: 127.0.0.1
      #     DB_USER: test_user
       #    DB_PASSWORD: test_password
-      #    DB_NAME: tak-api
+      #    DB_NAME: taskapi
       #  run: php test/insertForTest.php
