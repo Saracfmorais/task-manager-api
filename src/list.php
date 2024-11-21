@@ -1,21 +1,12 @@
 <?php
-// Conexão com o banco de dados
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'tak-api';
-$conn = new mysqli($host, $user, $password, $dbname);
-
-// Verificar a conexão
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
+require_once 'connectionbd.php';
 
 // Consulta para buscar os usuários cadastrados
 $sql = "SELECT USU_INT_ID, USU_VAR_NOME, USU_VAR_EMAIL FROM usuarios";
 $result = $conn->query($sql);
+$contagem = $result->num_rows;
 
-if ($result->num_rows > 0) {
+if ($contagem > 0) {
     echo "<h2>Usuários Cadastrados</h2>";
     echo "<table border='1'>
             <tr>
