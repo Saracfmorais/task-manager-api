@@ -82,13 +82,13 @@ jobs:
           VALUES ('Test User', 'test@example.com', 'password123');"
  
         #executa o teste de read
-   #   - name: Run Read Test
-    #    env:
-      #    DB_HOST: 127.0.0.1
-      #    DB_USER: test_user
-      #    DB_PASSWORD: test_password
-      #    DB_NAME: taskapi
-      #  run: php test/readTest.php
+      - name: Run Read Test
+        env:
+          DB_HOST: 127.0.0.1
+          DB_USER: test_user
+          DB_PASSWORD: test_password
+          DB_NAME: taskapi
+        run: php test/testRead.php
         #executa o teste de conexão segundo teste a ser realizado
       - name: Run Connection Test
         run: php test/testConnection.php
