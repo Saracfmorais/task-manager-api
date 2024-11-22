@@ -1,7 +1,7 @@
 <?php
 require_once 'connectionbd.php';
 
-// Capturar o ID do usuário
+// Capturar o ID do usuário 
 $id = intval($_GET['id']);
 
 // Buscar os dados do usuário
